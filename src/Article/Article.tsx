@@ -13,7 +13,7 @@ class Article extends React.Component<Props> {
         if (!this.props.data) {
             return (
                 <ArticleLoading>
-                    ...Loading
+                    ....Loading
                 </ArticleLoading>
             )
         }
