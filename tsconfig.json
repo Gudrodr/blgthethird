@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "esnext",
+      "jsx": "react",
+      "sourceMap": true,
+      "experimentalDecorators": true,
+      "strict": false,
+      "newLine": "LF"
+    },
+    "include": [
+      "./src"
+    ]
+  }
