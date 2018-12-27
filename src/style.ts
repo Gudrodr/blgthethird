@@ -5,7 +5,7 @@ export const Application = styled.div`
 
     display: flex;
     justify-content: space-between;
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     background-color: #080F1E;
     padding: 0;

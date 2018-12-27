@@ -12,15 +12,10 @@ interface State {
 }
 
 class App extends React.Component<{}, State> {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            currentView: 'preview',
-            currentIndex: 0,
-            articles: []
-        }
+    state: State = {
+        currentView: 'extended',
+        currentIndex: 0,
+        articles: []
     }
 
     componentDidMount() {
@@ -29,8 +24,12 @@ class App extends React.Component<{}, State> {
             .then(data => this.setState({articles: data.articles}))
     }
 
+    private changeCurrentView = (view: MainView) => {
+        this.setState({currentView: view})
+    }
+
     render() {
-        console.log(this.state.articles);
+
         return (
             <Application>
                 <LeftSideBar />
@@ -38,8 +37,7 @@ class App extends React.Component<{}, State> {
                     <Article
                         currentView={this.state.currentView}
                         data={this.state.articles[this.state.currentIndex]}
-                    /> ||
-                    <div />
+                    />
                 }
                 <RightSideBar />
             </Application>

@@ -1,3 +1,4 @@
+import { MainView } from './../type';
 import styled from 'styled-components';
 
 export const ArticleLoading = styled.div`
@@ -15,21 +16,31 @@ export const ArticleStyled = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100vh;
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div<{view: MainView}>`
     position: relative;
 
+    display: ${props => props.view === 'extended' ? 'flex' : 'none'};
+    justify-content: center;
     width: 100%;
     max-width: 700px;
-    height: 25em;
+    height: ${props => props.view === 'extended' ? 'calc(100vh - 4em)' : '25em'};
+    overflow-y: auto;
+    padding: 2em 0;
+
+    ::-webkit-scrollbar { 
+        display: none; 
+    }
 `;
 
-export const PreviewFrontTile = styled.div`
+export const PreviewFrontTile = styled.div<{view: MainView}>`
     position: absolute;
     left: 1em;
     bottom: 1.5em;
 
+    display: ${props => props.view === 'preview' ? 'block' : 'none'};
     width: 40%;
     min-height: 10em;
     max-height: 60%;
@@ -37,13 +48,16 @@ export const PreviewFrontTile = styled.div`
     z-index: 2;
 `;
 
-export const ArticleContent = styled.div`
-    position: absolute;
+export const ArticleContent = styled.div<{view: MainView}>`
+    position: ${props => props.view === 'extended' ? 'static' : 'absolute'};
     top: 1.5em;
     right: 1em;
 
     width: 80%;
     min-height: 15em;
+    height: 120vh;
+    max-height: ${props => props.view === 'preview' ? '80%' : 'auto'};
     background-color: white;
+    padding: 1em;
     z-index: 1;
 `;

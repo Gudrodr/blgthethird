@@ -9,7 +9,6 @@ interface Props {
 
 class Article extends React.Component<Props> {
     render() {
-        console.log(!this.props.data);
         if (!this.props.data) {
             return (
                 <ArticleLoading>
@@ -17,14 +16,20 @@ class Article extends React.Component<Props> {
                 </ArticleLoading>
             )
         }
-
+        console.log(this.props);
         return (
             <ArticleStyled>
-                <ContentWrapper>
-                    <PreviewFrontTile>
+                <ContentWrapper
+                    view={this.props.currentView}
+                >
+                    <PreviewFrontTile
+                        view={this.props.currentView}
+                    >
                         {this.props.data.title}
                     </PreviewFrontTile>
-                    <ArticleContent>
+                    <ArticleContent 
+                        view={this.props.currentView}
+                    >
                         {this.props.data.body}
                     </ArticleContent>
                 </ContentWrapper>   

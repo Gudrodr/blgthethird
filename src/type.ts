@@ -1,4 +1,4 @@
-export type MainView = 'main' | 'preview' | 'article';
+export type MainView = 'main' | 'preview' | 'extended';
 
 export interface ArticleUnit {
     title: string;
