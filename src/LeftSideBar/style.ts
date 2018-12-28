@@ -6,8 +6,8 @@ export const SideBar = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 12.5em;
-    width: 15%;
+    min-width: 8em;
+    width: 10%;
     background-color: transparent;
     padding: 1em 0 1em 1em;
 `;
@@ -30,7 +30,7 @@ export const Menu = styled.div`
 `;
 
 export const MenuItem = styled.div`
-    
+    cursor: pointer;
 `;
 
 export const MenuItemIcon = styled.span`

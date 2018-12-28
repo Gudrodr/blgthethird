@@ -32,13 +32,16 @@ class App extends React.Component<{}, State> {
 
         return (
             <Application>
-                <LeftSideBar />
-                {this.state.currentView !== 'main' &&
-                    <Article
-                        currentView={this.state.currentView}
-                        data={this.state.articles[this.state.currentIndex]}
-                    />
-                }
+                <LeftSideBar
+                    currentView={this.state.currentView}
+                    changeView={this.changeCurrentView}
+                />
+
+                <Article
+                    currentView={this.state.currentView}
+                    data={this.state.articles[this.state.currentIndex]}
+                />
+                
                 <RightSideBar />
             </Application>
         )

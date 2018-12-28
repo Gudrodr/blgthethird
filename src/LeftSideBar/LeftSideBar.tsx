@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { SideBar, Header, Menu, Socials, Icon, MenuItem, MenuItemIcon, SocialIcon } from './style';
+import { MainView } from '../type';
 
-class LeftSideBar extends React.Component {
+interface Props {
+    currentView: MainView;
+    changeView(view: string): void;
+}
+
+class LeftSideBar extends React.Component<Props> {
     render() {
         return (
             <SideBar>
@@ -9,6 +15,24 @@ class LeftSideBar extends React.Component {
                     <Icon />
                 </Header>
                 <Menu>
+                    <MenuItem
+                        onClick={() => this.props.changeView('main')}
+                    >
+                        <MenuItemIcon />
+                        <p>main view</p>
+                    </MenuItem>
+                    <MenuItem
+                        onClick={() => this.props.changeView('preview')}
+                    >
+                        <MenuItemIcon />
+                        <p>preview</p>
+                    </MenuItem>
+                    <MenuItem
+                        onClick={() => this.props.changeView('extended')}
+                    >
+                        <MenuItemIcon />
+                        <p>extended</p>
+                    </MenuItem>
                     <MenuItem>
                         <MenuItemIcon />
                         <p>menu item text</p>

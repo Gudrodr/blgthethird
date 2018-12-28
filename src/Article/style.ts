@@ -11,8 +11,9 @@ export const ArticleLoading = styled.div`
     color: #999;
 `;
 
-export const ArticleStyled = styled.div`
+export const ArticleStyled = styled.div<{view: MainView}>`
     display: flex;
+    visibility: ${props => props.view === 'main' ? 'hidden' : 'visible'};
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -22,7 +23,7 @@ export const ArticleStyled = styled.div`
 export const ContentWrapper = styled.div<{view: MainView}>`
     position: relative;
 
-    display: ${props => props.view === 'extended' ? 'flex' : 'none'};
+    display: ${props => props.view === 'extended' ? 'flex' : 'block'};
     justify-content: center;
     width: 100%;
     max-width: 700px;

@@ -18,7 +18,9 @@ class Article extends React.Component<Props> {
         }
         console.log(this.props);
         return (
-            <ArticleStyled>
+            <ArticleStyled
+                view={this.props.currentView}
+            >
                 <ContentWrapper
                     view={this.props.currentView}
                 >
