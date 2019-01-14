@@ -7,21 +7,21 @@ import Article from './Article/Article';
 
 interface State {
     currentView: MainView;
-    currentIndex: number;
+    articleIndex: number;
     articles: ArticleUnit[];
 }
 
 class App extends React.Component<{}, State> {
     state: State = {
-        currentView: 'extended',
-        currentIndex: 0,
+        currentView: 'main',
+        articleIndex: 0,
         articles: []
     }
 
     componentDidMount() {
         fetch('http://127.0.0.1:3000', {method: 'GET', mode: 'cors'})
             .then(response => response.json())
-            .then(data => this.setState({articles: data.articles}))
+            .then(data => this.setState({articles: data}))
     }
 
     private changeCurrentView = (view: MainView) => {
@@ -35,16 +35,22 @@ class App extends React.Component<{}, State> {
                 <LeftSideBar
                     currentView={this.state.currentView}
                     changeView={this.changeCurrentView}
+                    articles={this.state.articles}
+                    articleIndexChange={this.articleIndexChange}
                 />
 
                 <Article
                     currentView={this.state.currentView}
-                    data={this.state.articles[this.state.currentIndex]}
+                    data={this.state.articles && this.state.articles[this.state.articleIndex]}
                 />
                 
                 <RightSideBar />
             </Application>
         )
+    }
+
+    private articleIndexChange = (index: number) => {
+        this.setState({articleIndex: index});
     }
 }
 

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { SideBar, Header, Menu, Socials, Icon, MenuItem, MenuItemIcon, SocialIcon } from './style';
-import { MainView } from '../type';
+import { MainView, ArticleUnit } from '../type';
 
 interface Props {
     currentView: MainView;
+    articles: ArticleUnit[];
     changeView(view: string): void;
+    articleIndexChange(index: number): void;
 }
 
 class LeftSideBar extends React.Component<Props> {
@@ -33,30 +35,14 @@ class LeftSideBar extends React.Component<Props> {
                         <MenuItemIcon />
                         <p>extended</p>
                     </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemIcon />
-                        <p>menu item text</p>
-                    </MenuItem>
+                    {this.props.articles && this.props.articles.map((item, index) =>
+                        <MenuItem 
+                            onClick={() => this.props.articleIndexChange(index)}
+                        >
+                            <MenuItemIcon />
+                            <p>{item.title}</p>
+                        </MenuItem>
+                    )}
                 </Menu>
                 <Socials>
                     <SocialIcon>

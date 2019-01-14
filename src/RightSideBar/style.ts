@@ -17,10 +17,15 @@ export const Burger = styled.div`
 `;
 
 export const AdditionalInfo = styled.div`
+    position: relative;
     display: flex;
-    width: 150%;
+    height: 1em;
     justify-content: flex-end;
     span {
+        position: absolute;
+        left: calc(0px + 1em);
+
+        width: 8em;
         transform: rotate(90deg);
     }
 `;
