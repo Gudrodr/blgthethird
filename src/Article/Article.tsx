@@ -5,6 +5,7 @@ import { MainView, ArticleUnit } from '../type';
 interface Props {
     currentView: MainView;
     data: ArticleUnit;
+    onClick(): void;
 }
 
 class Article extends React.Component<Props> {
@@ -16,7 +17,7 @@ class Article extends React.Component<Props> {
                 </ArticleLoading>
             )
         }
-        console.log(this.props);
+
         return (
             <ArticleStyled
                 view={this.props.currentView}
@@ -26,11 +27,13 @@ class Article extends React.Component<Props> {
                 >
                     <PreviewFrontTile
                         view={this.props.currentView}
+                        onClick={this.props.onClick}
                     >
                         {this.props.data.title}
                     </PreviewFrontTile>
                     <ArticleContent 
                         view={this.props.currentView}
+                        onClick={this.props.onClick}
                     >
                         {this.props.data.body}
                     </ArticleContent>

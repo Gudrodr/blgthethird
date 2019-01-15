@@ -42,6 +42,7 @@ class App extends React.Component<{}, State> {
                 <Article
                     currentView={this.state.currentView}
                     data={this.state.articles && this.state.articles[this.state.articleIndex]}
+                    onClick={this.viewChange}
                 />
                 
                 <RightSideBar />
@@ -50,7 +51,11 @@ class App extends React.Component<{}, State> {
     }
 
     private articleIndexChange = (index: number) => {
-        this.setState({articleIndex: index});
+        this.setState({currentView: 'preview', articleIndex: index});
+    }
+
+    private viewChange = () => {
+        this.setState({currentView: 'extended'})
     }
 }
 

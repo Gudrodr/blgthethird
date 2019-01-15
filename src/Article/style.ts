@@ -46,6 +46,7 @@ export const PreviewFrontTile = styled.div<{view: MainView}>`
     min-height: 10em;
     max-height: 60%;
     background-color: beige;
+    cursor: pointer;
     z-index: 2;
 `;
 
@@ -60,5 +61,6 @@ export const ArticleContent = styled.div<{view: MainView}>`
     max-height: ${props => props.view === 'preview' ? '80%' : 'auto'};
     background-color: white;
     padding: 1em;
+    cursor: ${props => props.view === 'preview' ? 'pointer' : 'auto'};
     z-index: 1;
 `;
