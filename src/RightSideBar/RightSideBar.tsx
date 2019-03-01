@@ -10,12 +10,10 @@ class RightSideBar extends React.Component {
                 </Burger>
                 <AdditionalInfo>
                     <span>
-                        git or info here
+                        {/* git or info here */}
                     </span>
                 </AdditionalInfo>
-                <BottomLogo>
-                    git or logo here
-                </BottomLogo>
+                <BottomLogo/>
             </SideBar>
         )
     }

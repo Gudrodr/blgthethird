@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { SideBar, Header, Menu, Socials, Icon, MenuItem, MenuItemIcon, SocialIcon } from './style';
+import { SideBar, Header, Menu, Socials, Icon, MenuItem, MenuItemIcon, SocialIcon, FBIcon, LinkedIcon } from './style';
 import { MainView, ArticleUnit } from '../type';
+
 
 interface Props {
     currentView: MainView;
@@ -14,10 +15,10 @@ class LeftSideBar extends React.Component<Props> {
         return (
             <SideBar>
                 <Header>
-                    <Icon />
+                    <Icon/>
                 </Header>
                 <Menu>
-                    <MenuItem
+                    {/* <MenuItem
                         onClick={() => this.props.changeView('main')}
                     >
                         <MenuItemIcon />
@@ -34,7 +35,7 @@ class LeftSideBar extends React.Component<Props> {
                     >
                         <MenuItemIcon />
                         <p>extended</p>
-                    </MenuItem>
+                    </MenuItem> */}
                     {this.props.articles && this.props.articles.map((item, index) =>
                         <MenuItem 
                             onClick={() => this.props.articleIndexChange(index)}
@@ -45,15 +46,9 @@ class LeftSideBar extends React.Component<Props> {
                     )}
                 </Menu>
                 <Socials>
-                    <SocialIcon>
-                        FB
-                    </SocialIcon>
-                    <SocialIcon>
-                        TW
-                    </SocialIcon>
-                    <SocialIcon>
-                        INS
-                    </SocialIcon>
+                    <FBIcon/>
+                    <LinkedIcon/>
+                    <SocialIcon/>
                 </Socials>
             </SideBar>
         )

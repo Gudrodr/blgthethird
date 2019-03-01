@@ -1,3 +1,4 @@
+import { pics } from './../assets/index';
 import styled from 'styled-components';
 
 export const SideBar = styled.div`
@@ -21,7 +22,8 @@ export const Header = styled.div`
 export const Icon = styled.span`
     width: 3.125em;
     height: 3.125em;
-    background-color: beige;
+    background: url(${pics.catLogo}), center;
+    background-size: contain;
 `;
 
 export const Menu = styled.div`
@@ -41,12 +43,27 @@ export const MenuItemIcon = styled.span`
 
 export const Socials = styled.div`
     display: flex;
-    justify-content: space-around;
     width: 100%;
 `;
 
+export const FBIcon = styled.span`
+    width: 1em;
+    height: 1em;
+    background: url(${pics.fbLogo}), center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 1em;
+`;
+
+export const LinkedIcon = styled.span`
+    width: 1em;
+    height: 1em;
+    background: url(${pics.linkedLogo}), center;
+    background-size: contain;
+`;
+
 export const SocialIcon = styled.span`
-    width: 2em;
-    height: 2em;
-    background-color: beige;
+    width: 1em;
+    height: 1em;
+    visibility: hidden;
 `;

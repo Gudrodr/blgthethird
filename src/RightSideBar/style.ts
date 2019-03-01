@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { pics } from './../assets/index';
 
 export const SideBar = styled.div`
     color: #fafafa;
@@ -6,6 +7,7 @@ export const SideBar = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-end;
     min-width: 5em;
     width: 10%;
     padding: 1em 1em 1em 0;
@@ -31,5 +33,9 @@ export const AdditionalInfo = styled.div`
 `;
 
 export const BottomLogo = styled.div`
-    text-align: right;
+    width: 1em;
+    height: 1em;
+    background: url(${pics.githubLogo}), center;
+    background-size: contain;
+    background-repeat: no-repeat;
 `;

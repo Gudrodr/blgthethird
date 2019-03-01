@@ -19,9 +19,12 @@ class App extends React.Component<{}, State> {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:3000', {method: 'GET', mode: 'cors'})
+        fetch('http://127.0.0.1:3001', {method: 'GET', mode: 'cors'})
             .then(response => response.json())
-            .then(data => this.setState({articles: data}))
+            .then(data => {
+                console.log(data);
+                this.setState({articles: data.articles});
+            })
     }
 
     private changeCurrentView = (view: MainView) => {

@@ -1,12 +1,18 @@
 {
     "compilerOptions": {
       "module": "commonjs",
-      "target": "esnext",
+      "target": "es5",
+      "lib": ["es2017", "dom", "es5"],
       "jsx": "react",
       "sourceMap": true,
-      "experimentalDecorators": true,
       "strict": false,
-      "newLine": "LF"
+      "strictNullChecks": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "newLine": "LF",
+      "types": [
+        "node"
+      ]
     },
     "include": [
       "./src"
