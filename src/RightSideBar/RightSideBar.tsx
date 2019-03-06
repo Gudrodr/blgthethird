@@ -1,22 +1,80 @@
 import * as React from 'react';
-import { SideBar, Burger, AdditionalInfo, BottomLogo } from './style';
+import styled from 'styled-components';
+import { pics } from './../assets/index';
 
-class RightSideBar extends React.Component {
-    render() {
-        return (
-            <SideBar>
-                <Burger>
-                    =
-                </Burger>
-                <AdditionalInfo>
-                    <span>
-                        {/* git or info here */}
-                    </span>
-                </AdditionalInfo>
-                <BottomLogo/>
-            </SideBar>
-        )
-    }
+const RightSideBar = () => {
+    return (
+        <SideBar>
+            <MainMenuButton>
+                <div/>
+            </MainMenuButton>
+            <AdditionalInfo>
+                <span>
+                    {/* git or info here */}
+                </span>
+            </AdditionalInfo>
+            <BottomLogo/>
+        </SideBar>
+    )
 }
 
 export default RightSideBar;
+
+
+/** styles below */
+
+const SideBar = styled.div`
+    color: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-width: 5em;
+    width: 10%;
+`;
+
+const MainMenuButton = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 1em;
+    cursor: pointer;
+
+    div {
+        width: 1.6em;
+        height: 0.5em;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    :hover{
+        div {
+            height: 0;
+            border-bottom: 0;
+        }
+    }
+`;
+
+const AdditionalInfo = styled.div`
+    position: relative;
+    display: flex;
+    height: 1em;
+    justify-content: flex-end;
+    span {
+        position: absolute;
+        left: calc(0px + 1em);
+
+        width: 8em;
+        transform: rotate(90deg);
+    }
+`;
+
+const BottomLogo = styled.div`
+    width: 1em;
+    height: 1em;
+    background: url(${pics.githubLogo}), center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+`;
