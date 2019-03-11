@@ -25,7 +25,7 @@ const Article = (props: Props) => {
                 <ArticleContent 
                     view={props.currentView}
                 >
-                    {props.data.body}
+                    <p>{props.data.body}</p>
                 </ArticleContent>
             </ContentWrapper>   
         </ArticleStyled>
