@@ -22,5 +22,5 @@ export default Article;
 /** styles below */
 
 const ArticleStyled = styled.div`
-
+    display: block;
 `;
