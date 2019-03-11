@@ -48,14 +48,6 @@ class App extends React.Component<{}, State> {
                     articles={this.state.articles}
                     articleIndexChange={this.articleIndexChange}
                 />
-
-                {this.state.articleIndex !== undefined &&
-                    <Article
-                        currentView={this.state.currentView}
-                        data={this.state.articles[this.state.articleIndex]}
-                        onClick={this.viewChange}
-                    />
-                }
                 
                 <RightSideBar />
             </Application>
@@ -87,6 +79,27 @@ color: #999;
 `;
 
 const Application = styled.div`
+    @font-face {
+        font-family: 'Raleway', sans-serif;
+        src: url('./assets/fonts/Raleway-Black-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Black.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Bold-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Bold.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-ExtraBold-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-ExtraBold.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-ExtraLight-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-ExtraLight.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Light-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Light.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Medium-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Medium.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Regular-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Regular.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-SemiBold-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-SemiBold.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Thin-Italic.ttf') format('ttf'),
+             url('./assets/fonts/Raleway-Thin.ttf') format('ttf');
+    }
     font-family: 'Raleway', sans-serif;
 
     display: flex;

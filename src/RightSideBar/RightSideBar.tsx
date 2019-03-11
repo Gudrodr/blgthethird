@@ -46,10 +46,41 @@ const MainMenuButton = styled.div`
         height: 0.5em;
         border-top: 2px solid white;
         border-bottom: 2px solid white;
+
+        @keyframes expand {
+            from {
+                height: 0;
+                border-bottom: 0;
+            } 
+            50% {
+                height: 0.125em;
+                border-bottom: 2px solid white;
+            }
+            to {
+                height: 0.5em;
+                border-bottom: 2px solid white;
+            }
+        }
+        animation: expand 0.05s linear;
     }
 
     :hover{
         div {
+            @keyframes collapse {
+                from {
+                    height: 0.5em;
+                    border-bottom: 2px solid white;
+                } 
+                50% {
+                    height: 0.25em;
+                    border-bottom: 2px solid white;
+                }
+                to {
+                    height: 0;
+                    border-bottom: 0;
+                }
+            }
+            animation: collapse 0.05s linear;
             height: 0;
             border-bottom: 0;
         }
