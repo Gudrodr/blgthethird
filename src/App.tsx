@@ -2,8 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 import RightSideBar from './RightSideBar/RightSideBar';
-import { MainView, ArticleUnit } from './type';
-import Article from './Article/Article';
+import {MainView, ArticleUnit} from './type';
+import ArticlesList from './Articles/ArticlesList';
+import {Switch, Route} from 'react-router-dom';
+import Article from './Articles/Article';
 
 interface State {
     currentView: MainView;
@@ -31,25 +33,23 @@ class App extends React.Component<{}, State> {
     }
 
     render() {
-        if (this.state.articles.length === 0) {
-            return (
-                <ArticleLoading>
-                    ....Loading
-                </ArticleLoading>
-            )
-        }
 
         return (
             <Application>
-                <LeftSideBar
-                    currentView={this.state.currentView}
-                    articleIndex={this.state.articleIndex}
-                    changeView={this.changeCurrentView}
-                    articles={this.state.articles}
-                    articleIndexChange={this.articleIndexChange}
-                />
-                
-                <RightSideBar />
+                <LeftSideBar/>
+                <Switch>
+                    <Route path='/article/:alias' render={() => <Article/>} />
+                    <Route path='/' render={() => 
+                        this.state.articles.length === 0 &&
+                            <ArticleLoading>
+                                ....Loading
+                            </ArticleLoading> ||
+                            <ArticlesList
+                                articles={this.state.articles}
+                            />
+                    }/>
+                </Switch>
+                <RightSideBar/>
             </Application>
         )
     }
@@ -78,7 +78,7 @@ const ArticleLoading = styled.div`
 color: #999;
 `;
 
-const Application = styled.div`
+const Application = styled.main`
     @font-face {
         font-family: 'Raleway', sans-serif;
         src: url('./assets/fonts/Raleway-Black-Italic.ttf') format('ttf'),

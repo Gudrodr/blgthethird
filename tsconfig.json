@@ -10,9 +10,6 @@
       "experimentalDecorators": true,
       "skipLibCheck": true,
       "newLine": "LF",
-      "types": [
-        "node"
-      ]
     },
     "include": [
       "./src"

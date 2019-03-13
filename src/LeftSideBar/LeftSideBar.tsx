@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { pics } from './../assets/index';
 import styled from 'styled-components';
-import { MainView, ArticleUnit } from '../type';
 
 
 interface Props {
-    currentView: MainView;
-    articles: ArticleUnit[];
-    articleIndex: number | undefined;
-    changeView(view: string): void;
-    articleIndexChange(index: number): void;
+    
 }
 
 const LeftSideBar = (props: Props) => {
