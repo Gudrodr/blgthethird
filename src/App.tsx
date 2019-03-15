@@ -38,7 +38,7 @@ class App extends React.Component<{}, State> {
             <Application>
                 <LeftSideBar/>
                 <Switch>
-                    <Route path='/article/:alias' render={() => <Article/>} />
+                    <Route path='/article/:alias' render={props => <Article {...props} />} />
                     <Route path='/' render={() => 
                         this.state.articles.length === 0 &&
                             <ArticleLoading>

@@ -2,6 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import 'normalize.css';
 import App from './App';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('container'));
+const history = createBrowserHistory();
+
+ReactDOM.render(<Router history={history} ><App /></Router>, document.getElementById('container'));
