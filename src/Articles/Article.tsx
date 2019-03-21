@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {ArticleUnit} from '../type';
 import {RouteChildrenProps} from 'react-router';
-import {Link} from 'react-router-dom';
 
 
 const useFetch = (url: string) => {
@@ -29,7 +28,6 @@ const Article = (props: RouteChildrenProps) => {
     return (
         <ArticleStyled>
             <h1>{article.title}</h1>
-            <Link to='title_duo'>duo</Link>
             <p>{article.body}</p>
         </ArticleStyled>
     )
@@ -41,6 +39,23 @@ export default Article;
 /** styles below */
 
 const ArticleStyled = styled.div`
-    display: block;
+    width: 80%;
     color: white;
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    h1 {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+    }
+
+    p {
+        font-weight: 200;
+        letter-spacing: .1em;
+        line-height: 1.5em;
+    }
 `;

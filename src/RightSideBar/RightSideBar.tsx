@@ -30,8 +30,8 @@ const SideBar = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    min-width: 5em;
-    width: 10%;
+    min-width: 3em;
+    width: 5%;
 `;
 
 const MainMenuButton = styled.div`
@@ -108,4 +108,10 @@ const BottomLogo = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    transition: opacity .4s;
+
+    :hover {
+        opacity: .7;
+    }
 `;

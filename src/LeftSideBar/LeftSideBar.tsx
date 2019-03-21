@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { pics } from './../assets/index';
+import {pics} from './../assets/index';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 
 interface Props {
@@ -11,7 +12,7 @@ const LeftSideBar = (props: Props) => {
     return (
         <SideBar>
             <Header>
-                <Logo/>
+                <Logo to='/'/>
             </Header>
             <Socials>
                 <FBIcon/>
@@ -33,8 +34,8 @@ const SideBar = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 8em;
-    width: 10%;
+    min-width: 3em;
+    width: 5%;
     background-color: transparent;
 `;
 
@@ -44,7 +45,7 @@ const Header = styled.div`
     width: 100%;
 `;
 
-const Logo = styled.span`
+const Logo = styled(Link)`
     width: 2.5em;
     height: 2.5em;
     background: url(${pics.catLogo}), center;
@@ -55,6 +56,7 @@ const Logo = styled.span`
 
 const Socials = styled.div`
     display: flex;
+    justify-content: space-between;
     width: 100%;
 `;
 
@@ -64,17 +66,28 @@ const FBIcon = styled.span`
     background: url(${pics.fbLogo}), center;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: 1em;
     cursor: pointer;
+
+    transition: opacity .4s;
+
+    :hover {
+        opacity: .7;
+    }
 `;
 
 const LinkedIcon = styled.span`
     width: 0.9em;
     height: 0.9em;
-    background: url(${pics.linkedLogo}), center;
+    background: url(${pics.linkedLogo});
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    transition: opacity .4s;
+
+    :hover {
+        opacity: .7;
+    }
 `;
 
 const SocialIcon = styled.span`

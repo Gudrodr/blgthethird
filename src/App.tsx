@@ -28,10 +28,6 @@ class App extends React.Component<{}, State> {
             })
     }
 
-    private changeCurrentView = (view: MainView) => {
-        this.setState({currentView: view})
-    }
-
     render() {
 
         return (
@@ -53,14 +49,6 @@ class App extends React.Component<{}, State> {
             </Application>
         )
     }
-
-    private articleIndexChange = (index: number) => {
-        this.setState({currentView: 'preview', articleIndex: index});
-    }
-
-    private viewChange = () => {
-        this.setState({currentView: 'extended'})
-    }
 }
 
 export default App;
@@ -79,7 +67,8 @@ color: #999;
 `;
 
 const Application = styled.main`
-    @font-face {
+    font-family: 'Montserrat', sans-serif;
+    /* @font-face {
         font-family: 'Raleway', sans-serif;
         src: url('./assets/fonts/Raleway-Black-Italic.ttf') format('ttf'),
              url('./assets/fonts/Raleway-Black.ttf') format('ttf'),
@@ -100,7 +89,7 @@ const Application = styled.main`
              url('./assets/fonts/Raleway-Thin-Italic.ttf') format('ttf'),
              url('./assets/fonts/Raleway-Thin.ttf') format('ttf');
     }
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif; */
 
     display: flex;
     justify-content: space-between;
