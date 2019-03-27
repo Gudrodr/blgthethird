@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import LeftSideBar from './LeftSideBar/LeftSideBar';
 import RightSideBar from './RightSideBar/RightSideBar';
-import {MainView, ArticleUnit} from './type';
+import { MainView, ArticleUnit } from './type';
 import ArticlesList from './Articles/ArticlesList';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Article from './Articles/Article';
 
 interface State {

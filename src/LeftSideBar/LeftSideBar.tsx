@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {pics} from './../assets/index';
+import { pics } from './../assets/index';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 interface Props {

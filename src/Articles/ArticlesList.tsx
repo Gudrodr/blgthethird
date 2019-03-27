@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {ArticleUnit} from '../type';
-import {Link} from 'react-router-dom';
+import { ArticleUnit } from '../type';
+import { Link } from 'react-router-dom';
 
 interface Props {
     articles: ArticleUnit[];
