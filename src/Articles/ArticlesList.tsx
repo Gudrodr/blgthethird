@@ -21,8 +21,8 @@ const ArticlesList = (props: Props) => {
                     <img />
                     <h1>{index}</h1>
                     <TagAndDate>
-                        <span>tag here</span>
-                        <span>2019.02.24</span>
+                        <span>{item.tags}</span>
+                        <span>{item.date}</span>
                     </TagAndDate>
                     <Title>{item.title}</Title>
                     <StartReading>Читать</StartReading>
@@ -38,14 +38,15 @@ export default ArticlesList;
 /** styles below */
 
 const ArticlesListStyled = styled.div`
-    display: flex;
-    align-content: flex-start;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
     width: 90%;
-    padding-top: 4em;
-    padding-right: 1em;
-    padding-left: 1em;
+    padding-top: 2em;
+    /* padding-right: 1em;
+    padding-left: 1em; */
+    margin-top: -2.5em;
+    margin-bottom: -2.5em;
     overflow-y: scroll;
 
     ::-webkit-scrollbar {
@@ -53,7 +54,7 @@ const ArticlesListStyled = styled.div`
     }
 
     @media (max-width: 821px) {
-        justify-content: center;
+        grid-template-columns: 1fr;
         padding-top: 1em;
     }
 `;
@@ -97,9 +98,10 @@ const ArticlePreview = styled(Link)`
     text-transform: uppercase;
     letter-spacing: .12rem;
 
+    justify-self: center;
     /* height: 7em; */
     min-width: 15em;
-    width: 46%;
+    width: 80%;
 
     :nth-child(even) {
         margin: 1em 3% 2em 1%;

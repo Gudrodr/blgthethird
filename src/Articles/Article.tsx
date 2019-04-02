@@ -5,6 +5,7 @@ import { ArticleUnit } from '../type';
 import { RouteChildrenProps } from 'react-router';
 import { pics } from './../assets/index';
 import { Link } from 'react-router-dom';
+import * as ReactMarkdown from 'react-markdown';
 
 
 const useFetch = (url: string) => {
@@ -24,15 +25,15 @@ const Article = (props: RouteChildrenProps) => {
     const article: ArticleUnit | undefined = useFetch(props.match!.url);
 
     if (!article) {
-        return <div>Loading...</div>
+        return <ArticleLoading>Loading...</ArticleLoading>
     }
 
     return (
         <ArticleStyled>
             <TagAndDate>
-                <span>category</span>
-                <span>2019.02.12</span>
-                <span>author</span>
+                <span>{article.tags}</span>
+                <span>{article.date}</span>
+                <span>{article.author}</span>
             </TagAndDate>
             <h1>{article.title}</h1>
             <Share>
@@ -43,7 +44,9 @@ const Article = (props: RouteChildrenProps) => {
                     <ShareDirect/>
                 </ShareLinks>
             </Share>
-            <p>{article.body}</p>
+            <div>
+                <ReactMarkdown source={article.body} />
+            </div>
             <Share>
                 <span>Поделиться</span>
                 <ShareLinks>
@@ -77,10 +80,13 @@ export default Article;
 
 /** styles below */
 
+const ArticleLoading = styled.div`
+    color: white;
+`;
+
 const ArticleStyled = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 80%;
     max-width: 60em;
     color: white;
@@ -163,6 +169,10 @@ const ShareLinks = styled.div`
     display: flex;
     justify-content: space-between;
     width: 17em;
+
+    :last-child {
+        align-self: flex-end;
+    }
 `;
 
 const ShareTWTR = styled.span`
@@ -214,6 +224,7 @@ const BackButton = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: ${buttonWidth}em;
     height: 5em;
     background-color: transparent;

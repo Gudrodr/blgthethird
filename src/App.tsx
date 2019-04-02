@@ -6,6 +6,7 @@ import { MainView, ArticleUnit } from './type';
 import ArticlesList from './Articles/ArticlesList';
 import { Switch, Route } from 'react-router-dom';
 import Article from './Articles/Article';
+import Editor from './Tools/Editor';
 
 interface State {
     currentView: MainView;
@@ -34,6 +35,7 @@ class App extends React.Component<{}, State> {
             <Application>
                 <LeftSideBar/>
                 <Switch>
+                    <Route path='/write' component={Editor} />
                     <Route path='/article/:alias' render={props => <Article {...props} />} />
                     <Route path='/' render={() => 
                         this.state.articles.length === 0 &&
@@ -63,39 +65,20 @@ const ArticleLoading = styled.div`
     width: 100vw;
     height: 100vh;
 
-color: #999;
+    color: #999;
 `;
 
 const Application = styled.main`
     font-family: 'Montserrat', sans-serif;
-    /* @font-face {
-        font-family: 'Raleway', sans-serif;
-        src: url('./assets/fonts/Raleway-Black-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Black.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Bold-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Bold.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-ExtraBold-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-ExtraBold.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-ExtraLight-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-ExtraLight.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Light-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Light.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Medium-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Medium.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Regular-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Regular.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-SemiBold-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-SemiBold.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Thin-Italic.ttf') format('ttf'),
-             url('./assets/fonts/Raleway-Thin.ttf') format('ttf');
-    }
-    font-family: 'Raleway', sans-serif; */
 
     display: flex;
     justify-content: space-between;
-    height: 100vh;
-    width: 100%;
+    height: calc(100vh - 5em);
+    width: calc(100% - 5em);
     background-color: #080F1E;
     padding: 2.5em;
-    box-sizing: border-box;
+
+    * {
+        box-sizing: border-box;
+    }
 `;
