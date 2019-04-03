@@ -23,6 +23,22 @@ const useFetch = (url: string) => {
 const Article = (props: RouteChildrenProps) => {
 
     const article: ArticleUnit | undefined = useFetch(props.match!.url);
+    const linkRef = React.createRef<HTMLSpanElement>();
+    const copy = () => {
+        const range = document.createRange();
+        const selection = document.getSelection();
+        const linkPlace = document.createElement('span');
+
+        linkPlace.textContent = `http://localhost:8080${props.match!.url}`;
+        linkPlace.style.opacity = '0';
+        linkRef.current!.appendChild(linkPlace);
+        range.selectNodeContents(linkPlace);
+        selection!.removeAllRanges();
+        selection!.addRange(range);
+        document.execCommand('copy');
+        selection!.removeRange(range);
+        linkRef.current!.removeChild(linkPlace);
+    }
 
     if (!article) {
         return <ArticleLoading>Loading...</ArticleLoading>
@@ -39,9 +55,9 @@ const Article = (props: RouteChildrenProps) => {
             <Share>
                 <span>Поделиться</span>
                 <ShareLinks>
-                    <ShareTWTR/>
-                    <ShareFB/>
-                    <ShareDirect/>
+                    <ShareTWTR onClick={() => window.open(``, '_blanc')} />
+                    <ShareFB onClick={() => window.open(``, '_blanc')} />
+                    <ShareDirect ref={linkRef} onClick={copy} />
                 </ShareLinks>
             </Share>
             <div>
@@ -198,6 +214,8 @@ const ShareFB = styled.span`
 `;
 
 const ShareDirect = styled.span`
+    color: transparent;
+
     width: 5em;
     height: 5em;
     border: 1px solid rgba(211, 211, 211, .3);

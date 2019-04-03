@@ -15,8 +15,8 @@ const LeftSideBar = (props: Props) => {
                 <Logo to='/'/>
             </Header>
             <Socials>
-                <FBIcon/>
-                <LinkedIcon/>
+                <FBIcon onClick={() => window.open('https://www.facebook.com/alexander.romanenko.35', '_blanc')} />
+                <LinkedIcon onClick={() => window.open('https://www.linkedin.com/in/alexander-romanenko-b078b512a', '_blanc')} />
                 <SocialIcon/>
             </Socials>
         </SideBar>

@@ -13,7 +13,7 @@ const RightSideBar = () => {
                     {/* git or info here */}
                 </span>
             </AdditionalInfo>
-            <BottomLogo/>
+            <BottomLogo onClick={() => window.open('https://github.com/Gudrodr', '_blanc')} />
         </SideBar>
     )
 }
