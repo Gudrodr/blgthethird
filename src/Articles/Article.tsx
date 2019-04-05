@@ -13,7 +13,8 @@ const useFetch = (url: string) => {
     
     const fetchArticle = async () => await fetch(`http://127.0.0.1:3001${url}`, {method: 'GET', mode: 'cors'})
         .then(response => response.json())
-        .then(data => {setArticle(data)});
+        .then(data => setArticle(data));
+        
     useEffect(() => {
         fetchArticle();
     }, [url]);
@@ -23,14 +24,16 @@ const useFetch = (url: string) => {
 const Article = (props: RouteChildrenProps) => {
 
     const article: ArticleUnit | undefined = useFetch(props.match!.url);
+
     const linkRef = React.createRef<HTMLSpanElement>();
+
     const copy = () => {
         const range = document.createRange();
         const selection = document.getSelection();
         const linkPlace = document.createElement('span');
 
         linkPlace.textContent = `http://localhost:8080${props.match!.url}`;
-        linkPlace.style.opacity = '0';
+        linkPlace.style.textTransform = 'lowercase';
         linkRef.current!.appendChild(linkPlace);
         range.selectNodeContents(linkPlace);
         selection!.removeAllRanges();
@@ -38,6 +41,10 @@ const Article = (props: RouteChildrenProps) => {
         document.execCommand('copy');
         selection!.removeRange(range);
         linkRef.current!.removeChild(linkPlace);
+    }
+
+    const share = (url: string) => {
+        window.open(url, '_blanc');
     }
 
     if (!article) {
@@ -55,8 +62,8 @@ const Article = (props: RouteChildrenProps) => {
             <Share>
                 <span>Поделиться</span>
                 <ShareLinks>
-                    <ShareTWTR onClick={() => window.open(``, '_blanc')} />
-                    <ShareFB onClick={() => window.open(``, '_blanc')} />
+                    <ShareTWTR onClick={() => share(``)} />
+                    <ShareFB onClick={() => share(``)} />
                     <ShareDirect ref={linkRef} onClick={copy} />
                 </ShareLinks>
             </Share>

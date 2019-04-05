@@ -7,6 +7,7 @@ import ArticlesList from './Articles/ArticlesList';
 import { Switch, Route } from 'react-router-dom';
 import Article from './Articles/Article';
 import Editor from './Tools/Editor';
+import LoginScreen from './Tools/LoginScreen';
 
 interface State {
     currentView: MainView;
@@ -35,6 +36,7 @@ class App extends React.Component<{}, State> {
             <Application>
                 <LeftSideBar/>
                 <Switch>
+                    <Route path='/login' render={props => <LoginScreen {...props} />} />
                     <Route path='/write' component={Editor} />
                     <Route path='/article/:alias' render={props => <Article {...props} />} />
                     <Route path='/' render={() => 

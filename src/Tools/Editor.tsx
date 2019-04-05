@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { ArticleUnit } from '../type';
 import * as ReactMarkdown from 'react-markdown';
 import * as dateFns from 'date-fns';
+import { Redirect } from 'react-router';
 
 
 const Editor = () => {
-    const [article, updateArticle] = useState({date: dateFns.format(new Date(), 'DD.MM.YYYY')} as ArticleUnit);
+    const [article, setArticle] = useState({date: dateFns.format(new Date(), 'DD.MM.YYYY')} as ArticleUnit);
+    const [valid, setValid] = useState(undefined);
 
     const sendData = () => fetch(`http://127.0.0.1:3001/write`, {
         method: 'POST', 
@@ -16,38 +18,52 @@ const Editor = () => {
         body: JSON.stringify(article)
     });
 
+    useEffect(() => {
+        fetch('http://127.0.0.1:3001/user_check', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {'Authorization': `Bearer ${localStorage.getItem('devormedlogintoken')}`},
+        })
+            .then(result => result.json())
+            .then(data => setValid(data.success))
+    }, []);
+
+    if (valid === false) {
+        return <Redirect to='/login' />
+    }
+
     return (
         <EditorStyled>
             <EditorPart>
                 <Attributes>
                     <Tags>
                         <label>Tags</label>
-                        <input type='text' onChange={e => updateArticle({...article, tags: e.target.value})} />
+                        <input type='text' onChange={e => setArticle({...article, tags: e.target.value})} />
                     </Tags>
                     <DateStyled>
                         <label>Дата</label>
                         <input 
                             type='date' 
                             defaultValue={new Date().toISOString().substr(0, 10)}
-                            onChange={e => updateArticle({...article, date: dateFns.format(new Date(e.target.value), 'DD.MM.YYYY')})}
+                            onChange={e => setArticle({...article, date: dateFns.format(new Date(e.target.value), 'DD.MM.YYYY')})}
                         />
                     </DateStyled>
                     <Author>
                         <label>Автор</label>
-                        <input type='text' onChange={e => updateArticle({...article, author: e.target.value})} />
+                        <input type='text' onChange={e => setArticle({...article, author: e.target.value})} />
                     </Author>
                     <Title>
                         <label>Заголовок</label>
-                        <input type='text' onChange={e => updateArticle({...article, title: e.target.value})} />
+                        <input type='text' onChange={e => setArticle({...article, title: e.target.value})} />
                     </Title>
                     <Alias>
                         <label>Alias</label>
-                        <input type='text' onChange={e => updateArticle({...article, alias: e.target.value})} />
+                        <input type='text' onChange={e => setArticle({...article, alias: e.target.value})} />
                     </Alias>
-                    <SendButton onClick={sendData}>Создать</SendButton>
+                    <SendButton valid={valid} onClick={sendData}>Создать</SendButton>
                 </Attributes>
                 <Body>
-                    <textarea onChange={e => updateArticle({...article, body: e.target.value})} />
+                    <textarea onChange={e => setArticle({...article, body: e.target.value})} />
                 </Body>
             </EditorPart>
             <PreviewPart>
@@ -59,6 +75,8 @@ const Editor = () => {
 
 export default Editor;
 
+
+/** styles below */
 
 const EditorStyled = styled.div`
     display: flex;
@@ -110,6 +128,8 @@ const Author = styled(Title)``;
 
 const SendButton = styled.button`
     color: white;
+
+    visibility: ${(props: {valid: boolean | undefined}) => props.valid ? 'visible' : 'hidden'};
     padding: 1em;
     background-color: transparent;
     border: 1px solid rgba(211, 211, 211, 0.5);

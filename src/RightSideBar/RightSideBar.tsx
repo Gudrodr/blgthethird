@@ -43,7 +43,7 @@ const MainMenuButton = styled.div`
 
     div {
         width: 1.6em;
-        height: 0.5em;
+        height: .8em;
         border-top: 2px solid white;
         border-bottom: 2px solid white;
 
