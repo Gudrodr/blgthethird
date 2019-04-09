@@ -108,16 +108,18 @@ const ArticleLoading = styled.div`
 `;
 
 const ArticleStyled = styled.div`
+    color: white;
+
     display: flex;
     flex-direction: column;
     width: 80%;
     max-width: 60em;
-    color: white;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
+    overflow: auto;
+    scrollbar-width: none;
     margin-top: -2.5em;
     margin-bottom: -2.5em;
-    overflow-y: scroll;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
 
     ::-webkit-scrollbar {
         display: none;
@@ -215,7 +217,7 @@ const ShareFB = styled.span`
     border: 1px solid rgba(211, 211, 211, .3);
     background-image: url(${pics.fbLogo});
     background-position: center;
-    background-size: 32% 32%;
+    background-size: 20% 32%;
     background-repeat: no-repeat;
     cursor: pointer;
 `;
@@ -245,15 +247,24 @@ const BackButton = styled(Link)`
     letter-spacing: .15em;
     text-transform: uppercase;
     text-decoration: none;
+    text-align: center;
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    align-self: center;
 
     width: ${buttonWidth}em;
     height: 5em;
     background-color: transparent;
-    margin: 3em auto;
+    margin: 2.5em 0;
+
+    :after {
+        content: '';
+        position: absolute;
+        bottom: -7.5em;
+
+        display: ${navigator.appCodeName === 'Mozilla' ? 'block' : 'none'};
+        width: 1em;
+        height: 2.5em;
+    }
 
     svg {
         position: absolute;

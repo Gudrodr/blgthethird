@@ -75,12 +75,13 @@ const Application = styled.main`
 
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 5em);
-    width: calc(100% - 5em);
+    height: 100vh;
+    width: 100%;
     background-color: #080F1E;
     padding: 2.5em;
+    box-sizing: border-box;
 
-    * {
+    *, *::before, *::after {
         box-sizing: border-box;
     }
 `;

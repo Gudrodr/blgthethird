@@ -8,11 +8,11 @@ const RightSideBar = () => {
             <MainMenuButton>
                 <div/>
             </MainMenuButton>
-            <AdditionalInfo>
+            {/* <AdditionalInfo>
                 <span>
-                    {/* git or info here */}
+                    git or info here
                 </span>
-            </AdditionalInfo>
+            </AdditionalInfo> */}
             <BottomLogo onClick={() => window.open('https://github.com/Gudrodr', '_blanc')} />
         </SideBar>
     )
