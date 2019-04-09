@@ -50,7 +50,7 @@ const Article = (props: RouteChildrenProps) => {
     if (!article) {
         return <ArticleLoading>Loading...</ArticleLoading>
     }
-
+    console.log(navigator.appCodeName);
     return (
         <ArticleStyled>
             <TagAndDate>
@@ -259,11 +259,11 @@ const BackButton = styled(Link)`
     :after {
         content: '';
         position: absolute;
-        bottom: -7.5em;
+        bottom: -5em;
 
-        display: ${navigator.appCodeName === 'Mozilla' ? 'block' : 'none'};
-        width: 1em;
-        height: 2.5em;
+        display: ${navigator.userAgent.includes('WebKit') ? 'none' : 'block'};
+        width: 1px;
+        height: 1px;
     }
 
     svg {
