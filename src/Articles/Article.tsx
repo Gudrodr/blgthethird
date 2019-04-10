@@ -43,14 +43,18 @@ const Article = (props: RouteChildrenProps) => {
         linkRef.current!.removeChild(linkPlace);
     }
 
-    const share = (url: string) => {
-        window.open(url, '_blanc');
+    const shareTWTR = () => {
+        window.open(`https://twitter.com/intent/tweet?text=www.uno.com${props.match!.url}`, '_blanc');
+    }
+
+    const shareFB = () => {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=www.uno.com${props.match!.url}`, '_blanc');
     }
 
     if (!article) {
         return <ArticleLoading>Loading...</ArticleLoading>
     }
-    console.log(navigator.appCodeName);
+
     return (
         <ArticleStyled>
             <TagAndDate>
@@ -62,8 +66,8 @@ const Article = (props: RouteChildrenProps) => {
             <Share>
                 <span>Поделиться</span>
                 <ShareLinks>
-                    <ShareTWTR onClick={() => share(``)} />
-                    <ShareFB onClick={() => share(``)} />
+                    <ShareTWTR onClick={shareTWTR} />
+                    <ShareFB onClick={shareFB} />
                     <ShareDirect ref={linkRef} onClick={copy} />
                 </ShareLinks>
             </Share>
@@ -73,9 +77,9 @@ const Article = (props: RouteChildrenProps) => {
             <Share>
                 <span>Поделиться</span>
                 <ShareLinks>
-                    <ShareTWTR/>
-                    <ShareFB/>
-                    <ShareDirect/>
+                    <ShareTWTR onClick={shareTWTR} />
+                    <ShareFB onClick={shareFB} />
+                    <ShareDirect ref={linkRef} onClick={copy} />
                 </ShareLinks>
             </Share>
             <BackButton to='/'>
