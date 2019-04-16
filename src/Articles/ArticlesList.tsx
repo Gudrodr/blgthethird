@@ -43,8 +43,6 @@ const ArticlesListStyled = styled.div`
     height: 100vh;
     width: 90%;
     padding-top: 2em;
-    /* padding-right: 1em;
-    padding-left: 1em; */
     margin-top: -2.5em;
     margin-bottom: -2.5em;
     overflow-y: scroll;
@@ -99,7 +97,6 @@ const ArticlePreview = styled(Link)`
     letter-spacing: .12rem;
 
     justify-self: center;
-    /* height: 7em; */
     min-width: 15em;
     width: 80%;
 
